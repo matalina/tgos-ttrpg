@@ -1,6 +1,6 @@
 {
-  "name": "sttv",
-  "version": "0.0.0",
+  "name": "tgos-ttrpg",
+  "version": "0.1.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",
     "build": "vite build",
