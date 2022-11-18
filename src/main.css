@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+html, body, #app {
+  @apply h-full w-full;
+}
+
+main {
+  @apply flex;
+}
+
+#content {
+  @apply w-4/5;
+}
+
+#sidebar {
+  @apply w-1/5
+}
+
+
+/* Dice box drawer code because canvas was being stripped */
+#dice-box {
+  @apply absolute top-0 left-0 h-full w-full;
+}
+
+#dice-box canvas {
+  @apply h-full w-full;
+}
