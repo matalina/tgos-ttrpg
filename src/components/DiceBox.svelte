@@ -13,9 +13,6 @@ let display;
 let dicePicker;
 let roller;
 
-let formula = '1d20';
-let diceRoll = '';
-
 onMount(async () => {
   diceBox = new DiceBox("#dice-box", {
     assetPath: '/assets/dice-box/' // include the trailing backslash

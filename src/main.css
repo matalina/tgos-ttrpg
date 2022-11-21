@@ -22,9 +22,47 @@ main {
 
 /* Dice box drawer code because canvas was being stripped */
 #dice-box {
-  @apply absolute top-0 left-0 h-full w-full;
+  @apply absolute top-0 left-0 h-full w-full bg-teal-900/50;
 }
 
 #dice-box canvas {
   @apply h-full w-full;
+}
+
+#dice-box .dice-picker,
+#dice-box .adv-roller {
+  @apply top-[4.45rem]
+}
+
+#dice-box .adv-roller {
+  @apply z-40 w-2/3 mx-auto;
+}
+
+#dice-box .dice-picker .dice,
+#dice-box .dice-picker .action {
+  @apply flex flex-col;
+}
+
+#dice-box button, #dice-box .adv-roller--clear {
+  @apply py-2 px-3
+}
+
+#dice-box .dice-picker {
+  @apply block;
+}
+
+#dice-box .dice-picker .dice button {
+  @apply w-20 flex justify-center p-0 mb-3;
+}
+
+#dice-box .dice-picker .action button,
+#dice-box .adv-roller input {
+  @apply w-20 border-2 border-black bg-white text-black font-bold rounded mb-4;
+}
+#dice-box .adv-roller .adv-roller--notation {
+  @apply w-1/2 py-2 px-3 bg-slate-200;
+}
+
+#dice-box .dice-picker .output {
+  @apply absolute top-1/2 left-1/4 w-1/2 text-center;
 }
