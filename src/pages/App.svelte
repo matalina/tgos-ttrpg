@@ -1,21 +1,37 @@
 <script lang="ts">
-import DiceBox from './components/DiceBox.svelte';
-let diceBoxOpen = false;
-let page = 'home';
+import DiceTray from '../components/DiceTray.svelte';
+import DiceBox from '../components/DiceBox.svelte';
+import { page, diceBoxOpen } from '../lib/stores';
+
+let trayOpen = false;
 
 function toggleDice() {
-  diceBoxOpen = !diceBoxOpen;
+  $diceBoxOpen = !$diceBoxOpen;
 }
 
 function setPage(name: string) {
-  page = name;
+  $page = name;
+}
+
+function getResults(e: CustomEvent) {
+  const results = e.detail;
+  console.log(results);
+}
+
+function toggleDiceTray() {
+  trayOpen = !trayOpen;
+}
+
+function displayResults() {
+  trayOpen = false;
 }
 
 </script>
 
-<header class="absolute top-0 left-0 w-full bg-teal-50 z-50">
+<header class="fixed top-0 left-0 w-full bg-teal-50 z-10">
   <nav>
-    <button on:click={toggleDice}><i class="fa-thin fa-dice-d20"></i></button>
+    <button on:click={toggleDiceTray}><i class="fa-thin fa-dice-d20"></i></button>
+    <button><i class="fa-sharp fa-scroll-old"></i></button>
     <button><i class="fa-sharp fa-solid fa-user-plus"></i></button>
     <button><i class="fa-regular fa-address-card"></i></button>
     <button><i class="fa-solid fa-dragon"></i></button>
@@ -32,9 +48,15 @@ function setPage(name: string) {
 
 </main>
 
-{#if diceBoxOpen}
+{#if $diceBoxOpen}
 <div id="dice">
-  <DiceBox />
+  <DiceBox on:click={toggleDice} on:rolled={getResults}/>
+</div>
+{/if}
+
+{#if trayOpen}
+<div id="tray">
+  <DiceTray on:shake={toggleDice} on:rolled={displayResults}/>
 </div>
 {/if}
 
@@ -44,7 +66,6 @@ function setPage(name: string) {
 </footer>
 
 <style class="postcss">
-
 nav {
   @apply border-b-8 border-teal-800 p-3;
 }
@@ -53,5 +74,10 @@ nav button {
 }
 nav button:hover, nav button:focus {
   @apply bg-teal-600;
+}
+
+#tray {
+  @apply absolute top-24 left-0 w-60;
+  @apply bg-teal-50 text-teal-900 border-8 p-3 rounded-r-xl border-4 border-teal-900;;
 }
 </style>

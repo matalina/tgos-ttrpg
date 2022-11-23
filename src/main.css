@@ -11,25 +11,19 @@ main {
   @apply flex;
 }
 
-#content {
-  @apply w-4/5;
-}
-
-#sidebar {
-  @apply w-1/5
-}
-
-
 /* Dice box drawer code because canvas was being stripped */
 #dice-box {
-  @apply absolute top-0 left-0 h-full w-full bg-teal-900/50;
+  @apply absolute top-0 left-0 h-full w-full bg-teal-900/50 z-40;
 }
 
 #dice-box canvas {
   @apply h-full w-full;
 }
+.displayResults {
+  @apply z-50 !important;
+}
 
-#dice-box .dice-picker,
+/* #dice-box .dice-picker,
 #dice-box .adv-roller {
   @apply top-[4.45rem]
 }
@@ -65,4 +59,4 @@ main {
 
 #dice-box .dice-picker .output {
   @apply absolute top-1/2 left-1/4 w-1/2 text-center;
-}
+} */

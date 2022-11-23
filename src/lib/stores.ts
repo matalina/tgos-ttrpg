@@ -1,3 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const count = writable(0);
+export const page = writable('home');
+export const diceBoxOpen = writable(false);
+export const diceFormula = writable("1d20");
